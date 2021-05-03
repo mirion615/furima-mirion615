@@ -26,7 +26,7 @@
 | ship_from_id       | integer    | null: false       |
 | days_to_ship_id    | integer    | null: false       |
 | item_price         | integer    | null: false       |
-| user_id            | references | foreign_key: true |
+| user               | references | foreign_key: true |
 
 ### Association
 - has_one    : purchase
