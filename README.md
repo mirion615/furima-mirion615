@@ -36,8 +36,8 @@
 ## addressesテーブル
 | Column        | Type       | Options           |
 | ------------- | ---------- | ----------------- |
-| postal_code   | string    | null: false       |
-| prefecture    | string     | null: false       |
+| postal_code   | string     | null: false       |
+| prefecture    | integer    | null: false       |
 | city          | string     | null: false       |
 | house_number  | integer    | null: false       |
 | building_name | string     |
