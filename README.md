@@ -20,11 +20,11 @@
 | --------------- | ---------- | ----------------- |
 | title           | string     | null: false       |
 | text            | text       | null: false       |
-| category        | string     | null: false       |
-| item_condition  | string     | null: false       |
-| delivery_charge | string     | null: false       |
-| ship_from       | string     | null: false       |
-| days_to_ship    | string     | null: false       |
+| category        | integer    | null: false       |
+| item_condition  | integer    | null: false       |
+| delivery_charge | integer    | null: false       |
+| ship_from       | integer    | null: false       |
+| days_to_ship    | integer    | null: false       |
 | item_price      | integer    | null: false       |
 | user            | references | foreign_key: true |
 
