@@ -16,17 +16,17 @@
 
 
 ## itemsテーブル
-| Column          | Type       | Options           |
-| --------------- | ---------- | ----------------- |
-| title           | string     | null: false       |
-| text            | text       | null: false       |
-| category        | integer    | null: false       |
-| item_condition  | integer    | null: false       |
-| delivery_charge | integer    | null: false       |
-| ship_from       | integer    | null: false       |
-| days_to_ship    | integer    | null: false       |
-| item_price      | integer    | null: false       |
-| user            | references | foreign_key: true |
+| Column             | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| title              | string     | null: false       |
+| text               | text       | null: false       |
+| category_id        | integer    | null: false       |
+| item_condition_id  | integer    | null: false       |
+| delivery_charge_id | integer    | null: false       |
+| ship_from_id       | integer    | null: false       |
+| days_to_ship_id    | integer    | null: false       |
+| item_price_id      | integer    | null: false       |
+| user_id            | references | foreign_key: true |
 
 ### Association
 - has_one    : purchase
