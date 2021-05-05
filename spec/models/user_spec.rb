@@ -11,13 +11,12 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it 'nicknameが40文字以下であれば登録できる' do
-        @user.nickname = "aaaaaa"
+        @user.nickname = 'aaaaaa'
         expect(@user).to be_valid
-
       end
       it 'passwordとpassword_confirmationが6文字以上で、英数字混合であれば登録できる' do
-        @user.password = "aa00AA"
-        @user.password_confirmation = "aa00AA"
+        @user.password = 'aa00AA'
+        @user.password_confirmation = 'aa00AA'
         expect(@user).to be_valid
       end
       it 'family_nameとfirst_nameが漢字・ひらがなを使用していれば登録できる' do
@@ -49,7 +48,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it 'passwordが存在してもpassword_confirmationが空では登録できない' do
-        @user.password = "aa00AA"
+        @user.password = 'aa00AA'
         @user.password_confirmation = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
@@ -82,7 +81,7 @@ RSpec.describe User, type: :model do
       it 'nicknameが40文字以上では登録できない' do
         @user.nickname = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname is too long (maximum is 40 characters)")
+        expect(@user.errors.full_messages).to include('Nickname is too long (maximum is 40 characters)')
       end
       it '重複したemailが存在する場合登録できない' do
         @user.save
@@ -94,7 +93,7 @@ RSpec.describe User, type: :model do
       it 'emailに@が含まれていないと登録できない' do
         @user.email = 'email.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが5文字以下では登録できない' do
         @user.password = 'aa11A'
@@ -104,12 +103,12 @@ RSpec.describe User, type: :model do
       it 'passwordが半角英字だけだと保存できない' do
         @user.password = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
       it 'passwordが半角数字だけだと保存できない' do
         @user.password = '111111'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+        expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
       end
       it 'family_nameが半角では登録できない' do
         @user.family_name = 'aa11AA'
