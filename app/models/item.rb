@@ -1,16 +1,28 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :item_condition, :delivery_charge, :ship_from, :days_to_ship
-  belongs_to :user
+  belongs_to :category
+  belongs_to :item_condition
+  belongs_to :delivery_charge
+  belongs_to :ship_from
+  belongs_to :days_to_ship
+  belongs_to :user, optional: true
   has_one_attached :image
 
 
 
 
-  with_options presence:true, numericality: { other_than: 1 } do
-    validates :category_id, :item_condition, :delivery_charge, :ship_from, :days_to_ship
+  with_options presence:true, do
+    validates :image
+    validates :title
+    validates :text
+    validates :item_price, numericality: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
   end
 
-
-
+  with_options numericality: { other_than: 1 } do
+    validates :category_id 
+    validates :item_condition_id
+    validates :delivery_charge_id
+    validates :ship_from_id
+    validates :days_to_ship_id
   end
+end
