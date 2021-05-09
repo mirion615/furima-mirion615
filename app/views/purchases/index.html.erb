@@ -27,7 +27,11 @@
       </p>
     </div>
 
+
     <%= form_with url: item_purchases_path, model: @purchase_address, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
