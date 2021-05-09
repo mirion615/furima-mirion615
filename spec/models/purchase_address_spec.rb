@@ -18,43 +18,43 @@ RSpec.describe PurchaseAddress, type: :model do
 
     context '内容に問題がある場合' do
       it 'postal_codeが空だと保存できないこと' do
-        @purchase_address.postal_code = ""
+        @purchase_address.postal_code = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
       end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-        @purchase_address.postal_code = 1234567
+        @purchase_address.postal_code = 1_234_567
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal code Input correctly")
+        expect(@purchase_address.errors.full_messages).to include('Postal code Input correctly')
       end
       it 'ship_from_idが1だと保存できないこと' do
-        @purchase_address.ship_from_id = 1 
+        @purchase_address.ship_from_id = 1
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Ship from Select")
+        expect(@purchase_address.errors.full_messages).to include('Ship from Select')
       end
       it 'cityが空だと保存できないこと' do
-        @purchase_address.city =  ""
+        @purchase_address.city = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("City can't be blank")
       end
       it 'house_numberが空だと保存できないこと' do
-        @purchase_address.house_number = '' 
+        @purchase_address.house_number = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("House number can't be blank")
       end
       it 'building_nameは空でも保存できること' do
-        @purchase_address.building_name = '' 
+        @purchase_address.building_name = ''
         expect(@purchase_address).to be_valid
       end
       it 'phone_numberが空だと保存できないこと' do
-        @purchase_address.phone_number = '' 
+        @purchase_address.phone_number = ''
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberは半角数字しか保存できない' do
         @purchase_address.phone_number = '２３あい子'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Phone number Input only number")
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input only number')
       end
       it 'userが紐付いていないと保存できないこと' do
         @purchase_address.user_id = nil

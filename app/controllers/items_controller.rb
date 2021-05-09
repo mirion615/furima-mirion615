@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :move_to_index, only: [:edit,:update, :destroy]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -40,8 +39,6 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-
-
   private
 
   def item_params
@@ -49,14 +46,12 @@ class ItemsController < ApplicationController
                                  :ship_from_id, :days_to_ship_id).merge(user_id: current_user.id)
   end
 
-  def  set_item
+  def set_item
     @item = Item.find(params[:id])
   end
 
   def move_to_index
     @item = Item.find(params[:id])
-    unless user_signed_in? && current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
   end
 end
