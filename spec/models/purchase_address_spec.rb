@@ -63,7 +63,22 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'phone_numberは半角数字しか保存できない' do
         @purchase_address.phone_number = '２３あい子'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number Input only number')
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input correctly')
+      end
+      it 'phone_numberは9桁以下では保存できない' do
+        @purchase_address.phone_number = 123456789
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input correctly')
+      end
+      it 'phone_numberは12桁以上では保存できない' do
+        @purchase_address.phone_number = 123456789012
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input correctly')
+      end
+      it 'phone_numberは英数字混合では保存できない' do
+        @purchase_address.phone_number = '123asdffg'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Phone number Input correctly')
       end
       it 'userが紐付いていないと保存できないこと' do
         @purchase_address.user_id = nil
