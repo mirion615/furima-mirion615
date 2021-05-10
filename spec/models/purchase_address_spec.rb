@@ -30,6 +30,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
       end
+      it 'postal_codeが数字のみでは登録できないこと' do
+        @purchase_address.postal_code = 1111111
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Postal code Input correctly')
+      end
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @purchase_address.postal_code = 1_234_567
         @purchase_address.valid?
