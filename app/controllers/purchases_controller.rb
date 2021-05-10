@@ -5,7 +5,6 @@ class PurchasesController < ApplicationController
   before_action :sold_out_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
   end
 
