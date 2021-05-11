@@ -23,7 +23,7 @@ class Item < ApplicationRecord
       validates :days_to_ship_id
     end
 
-    validates :item_price, numericality: { greater_than: 300, less_than: 9_999_999 }, format: { with: /\A[0-9]+\z/ },
+    validates :item_price, numericality: { greater_than: 299, less_than: 10_000_000 }, format: { with: /\A[0-9]+\z/ },
                            allow_blank: true
   end
 end
